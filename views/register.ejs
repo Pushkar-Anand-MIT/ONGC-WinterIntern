@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.43.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>ONGC|Register</title>
+  </head>
+  <body class="bg-base-200">
+    <div class="fixed navbar bg-red-800">
+      <div class="flex-1">
+        <img
+          class="h-12 w-12"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6e0GlvpFhLzztcgI1Rlg2HKpr4VQwLaspLpZh9iI&s"
+          alt="Icon"
+        />
+        <a
+          class="btn btn-ghost normal-case text-xl text-gray-400"
+          href="home.ejs"
+          >ONGC</a
+        >
+      </div>
+    </div>
+    <div class="pt-20">
+      <h1 class="font-bold text-4xl text-center">Registration</h1>
+    </div>
+    <div
+      class="box-border bg-red-100 border-black/20 border-2 rounded-xl max-w-4xl mx-auto mt-5 mb-5 p-2 pt-8 py-5"
+    >
+      <form action="/register" method="post" class="form-control">
+        <div>
+          <label for="" class="label w-fit"
+            >Name<span style="color: red">*</span></label
+          >
+          <input
+            class="input w-full"
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            required
+          />
+        </div>
+        <div class="flex gap-x-4">
+          <div class="flex-1">
+            <label for="gender-select" class="label w-fit"
+              >Gender<span style="color: red">*</span></label
+            >
+            <select class="input w-full" name="gender" id="gender-select">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label for="" class="label w-fit"
+              >Date of Birth<span style="color: red">*</span></label
+            >
+            <input
+              type="date"
+              name="dob"
+              placeholder="dd/mm/yy"
+              max="2022-01-01"
+              min="1982-01-31"
+              class="input w-full"
+              required
+            />
+          </div>
+        </div>
+        <label for="" class="label w-fit"
+          >Aadhar<span style="color: red">*</span></label
+        >
+        <input
+          type="password"
+          name="aadhar"
+          class="input w-full"
+          placeholder="xxxx xxxx xxxx"
+          required
+        />
+        <label for="" class="label w-fit"
+          >Address<span style="color: red">*</span></label
+        >
+        <input
+          class="input w-full"
+          type="text"
+          name="address"
+          placeholder="1234 Main St"
+          required
+        />
+        <div class="flex gap-x-4">
+          <div class="flex-1">
+            <label for="" class="label w-fit"
+              >Email<span style="color: red">*</span></label
+            >
+            <input
+              class="input w-full"
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div class="flex-1">
+            <label for="" class="label w-fit"
+              >Mobile Number<span style="color: red">*</span></label
+            >
+            <input
+              type="number"
+              name="mobile"
+              class="input w-full"
+              placeholder="+91-10 digit mobile number"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="flex gap-x-4">
+          <div class="flex-1">
+            <label for="" class="label w-fit"
+              >Branch<span style="color: red">*</span></label
+            >
+            <input
+              class="input w-full"
+              type="text"
+              name="branch"
+              placeholder="Branch"
+              required
+            />
+          </div>
+          <div class="flex-1">
+            <label for="" class="label w-fit"
+              >Semester<span style="color: red">*</span></label
+            >
+            <input
+              type="text"
+              name="semester"
+              class="input w-full"
+              placeholder="Semester"
+              required
+            />
+          </div>
+        </div>
+
+        <label for="" class="label w-fit"
+          >Father's/Mother's Name<span style="color: red">*</span></label
+        >
+        <input
+          class="input w-full"
+          type="text"
+          name="pname"
+          placeholder="Parent's Name"
+          required
+        />
+        <label for="" class="label w-fit"
+          >Occupation<span style="color: red">*</span></label
+        >
+        <input
+          class="input w-full"
+          type="text"
+          name="occupation"
+          placeholder="Parent's Occupation"
+          required
+        />
+        <label for="" class="label w-fit"
+          >Percentage in Class XII<span style="color: red">*</span></label
+        >
+        <input
+          class="input w-full"
+          type="number"
+          name="marks"
+          placeholder="Percentage "
+          required
+        />
+        <label for="" class="label w-fit"
+          >GCPA/Percentage in Last Semester<span style="color: red"
+            >*</span
+          ></label
+        >
+        <input
+          class="input w-full"
+          type="number"
+          name="cgpa"
+          placeholder="CGPA/Percentage"
+          required
+        />
+        <div class="flex gap-x-4">
+          <div class="flex-1">
+            <label for="photograph" class="label w-fit"
+              >Photograph<span style="color: red">*</span></label
+            >
+            <input
+              class="file-input w-full"
+              type="file"
+              id="photograph"
+              onchange="upload('photograph')"
+              name="photograph"
+              placeholder="Photograph"
+              required
+            />
+          </div>
+          <div class="flex-1">
+            <label for="marksheet" class="label w-fit"
+              >Marksheet of Class XII<span style="color: red">*</span></label
+            >
+            <input
+              id="marksheet"
+              class="file-input w-full"
+              type="file"
+              name="marksheet"
+              onchange="upload('marksheet')"
+              placeholder="Marksheet"
+              required
+            />
+          </div>
+        </div>
+        <div class="flex gap-x-4">
+          <div class="flex-1">
+            <label for="lastsem" class="label w-fit"
+              >Last Semester Marksheet<span style="color: red">*</span></label
+            >
+            <input
+              id="lastsem"
+              class="file-input w-full"
+              type="file"
+              name="lastsem"
+              onchange="upload('lastsem')"
+              placeholder="Marksheet"
+              required
+            />
+          </div>
+          <div class="flex-1">
+            <label for="letter" class="label w-fit"
+              >Bonafide Training Letter<span style="color: red">*</span></label
+            >
+            <input
+              id="letter"
+              class="file-input w-full"
+              type="file"
+              name="letter"
+              onchange="upload('letter')"
+              placeholder="Letter"
+              required
+            />
+          </div>
+        </div>
+
+        <button class="btn bg-red-700 mt-4 text-white" type="submit">
+          Register
+        </button>
+      </form>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com">
+      tailwind.config = {
+             theme: {
+                 extend: {
+                     colors: {
+                         clifford: '#da373d',
+                     }
+                 }
+             }
+         }
+    </script>
+    <!-- <script type="text/javascript" src="../dist/imagekit.js"></script> -->
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js"
+    ></script>
+    <script>
+      var imagekit = new ImageKit({
+        publicKey: "public_N2WCP9xb8QliDB+m3ZvzUz0SeZ4=",
+        urlEndpoint: "https://ik.imagekit.io/vparsitui", // https://ik.imagekit.io/your_imagekit_id
+        authenticationEndpoint: "http://localhost:3000/signature",
+      });
+
+      function upload(id) {
+        const file = document.getElementById(id);
+        imagekit.upload(
+          {
+            file: file.files[0],
+            fileName: file.files[0].name || "sample-file.jpg",
+            tags: ["tag1"], // Comma seperated value of tags
+            responseFields: "tags", // Comma seperated values of fields you want in response e.g. tags, isPrivateFile etc
+          },
+          function (err, result) {
+            if (err) {
+              alert(
+                "Error in file upload. Check console logs for error response"
+              );
+              console.log(err);
+            } else {
+              file.fileName = result.url;
+              // file.setAttribute("value", result.url);
+              // alert("File uploaded. Check console logs for success response");
+              // console.log(result);
+            }
+          }
+        );
+      }
+    </script>
+  </body>
+</html>
