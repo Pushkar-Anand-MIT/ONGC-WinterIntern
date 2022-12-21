@@ -126,7 +126,7 @@ app.post("/login", async function (req, res) {
 });
 
 app.get("/dashboard", authenticate, async function (req, res) {
-  const applications = await Formdata.find({});
+  const applications = await Formdata.find({ status: "Pending" });
   res.render("dashboard.ejs", { applications });
 });
 
@@ -173,13 +173,18 @@ app.post("/register", async function (req, res) {
     status: "Pending",
   });
   formdata.save();
+  const sendmail = await mailservice.send(
+    email,
+    "Form Submitted Successfully",
+    "Dear Candidate,<br>Thank you for submitting the ONGC intern application form. We have received your submission and it is being processed. We will review your submission and get back to you. If you have any questions in the meantime, please don't hesitate to contact us at ongc@gmail.com. Thank you for your patience and cooperation.Sincerely, ONGC"
+  );
   res.render("register", {});
 });
 
-app.get("/test", async function (req, res) {
-  const check = await mailservice.send("alsoamit@gmail.com", "test", "test");
-  console.log({ check });
-});
+// app.get("/test", async function (req, res) {
+//   const check = await mailservice.send("alsoamit@gmail.com", "test", "test");
+//   console.log({ check });
+// });
 
 app.listen(3000, async function (err) {
   if (err) console.log("error");
