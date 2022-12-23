@@ -181,6 +181,9 @@ app.post("/register", async function (req, res) {
   res.render("register", {});
 });
 
+app.post("/dashboard", function (req, res) {
+  console.log(req.body.name);
+});
 // app.get("/test", async function (req, res) {
 //   const check = await mailservice.send("alsoamit@gmail.com", "test", "test");
 //   console.log({ check });
