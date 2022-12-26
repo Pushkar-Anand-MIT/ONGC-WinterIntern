@@ -44,6 +44,8 @@
       <h5><%= element.name %></h5>
       <h5><%= element.name %></h5>
       <h5><%= element.name %></h5>
+
+      <% if( element.status === "Pending") { %>
       <div class="container grid grid-cols-2">
         <a
           href="http://localhost:3000/dashboard/accept/<%=element._id%>"
@@ -59,6 +61,15 @@
           <button type="submit" class="text-center">Reject</button>
         </a>
       </div>
+      <% }else if(element.status === "Accepted") { %>
+      <div class="box-border border-2 bg-emerald-800 text-center text-white">
+        Accepted
+      </div>
+      <%}else{%>
+      <div class="box-border border-2 bg-red-700 text-center text-white">
+        Rejected
+      </div>
+      <%}%>
     </div>
 
     <script src="https://cdn.tailwindcss.com"></script>

@@ -130,6 +130,18 @@ app.get("/dashboard", authenticate, async function (req, res) {
   res.render("dashboard.ejs", { applications });
 });
 
+app.get("/dashboard/selected", authenticate, async function (req, res) {
+  const applications = await Formdata.find({ status: "Accepted" });
+  res.render("dashboard.ejs", { applications });
+  // console.log("Test");
+});
+
+app.get("/dashboard/rejected", authenticate, async function (req, res) {
+  const applications = await Formdata.find({ status: "Rejected" });
+  res.render("dashboard.ejs", { applications });
+  // console.log("Test");
+});
+
 app.get("/register", async function (req, res) {
   res.render("register", {});
 });
