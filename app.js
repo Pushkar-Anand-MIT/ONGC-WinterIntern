@@ -181,9 +181,40 @@ app.post("/register", async function (req, res) {
   res.render("register", {});
 });
 
-app.post("/dashboard", function (req, res) {
-  console.log(req.body.name);
+// /dashboard/394872394587
+
+app.get("/dashboard/:id", async function (req, res) {
+  const { id } = req.params;
+  // console.log(id, req.query);
+  // console.log(req.params);
+  const element = await Formdata.find({ _id: id });
+  console.log(element);
+
+  res.render("applications.ejs", { element: element[0] });
 });
+
+app.get("/dashboard/accept/:id", async function (req, res) {
+  const { id } = req.params;
+  const element = await Formdata.updateOne({ _id: id }, { status: "Accepted" });
+  console.log(element);
+
+  res.redirect("/dashboard");
+});
+
+app.get("/dashboard/reject/:id", async function (req, res) {
+  const { id } = req.params;
+  const element = await Formdata.updateOne({ _id: id }, { status: "Rejected" });
+  console.log(element);
+
+  res.redirect("/dashboard");
+});
+
+// app.post("/dashboard", async function (req, res) {
+//   var id = req.body.name;
+//   console.log(id);
+//   res.redirect(`/dashboard/${id}`);
+// });
+
 // app.get("/test", async function (req, res) {
 //   const check = await mailservice.send("alsoamit@gmail.com", "test", "test");
 //   console.log({ check });

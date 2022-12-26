@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.43.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>Applications</title>
+  </head>
+  <body>
+    <div class="fixed navbar bg-red-800">
+      <div class="flex-1">
+        <img
+          class="h-12 w-12"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6e0GlvpFhLzztcgI1Rlg2HKpr4VQwLaspLpZh9iI&s"
+          alt="Icon"
+        />
+        <a
+          class="btn btn-ghost normal-case text-xl text-gray-400"
+          href="home.ejs"
+          >ONGC</a
+        >
+      </div>
+    </div>
+    <div class="container pt-20 max-w-[960px] mx-auto box-border border-2">
+      <h1 class="text-center text-xl font-medium mb-5"><%= element.name %></h1>
+      <h5><%= element.gender %></h5>
+      <h5><%= element.dob %></h5>
+      <h5><%= element.aadhar %></h5>
+      <h5><%= element.address %></h5>
+      <h5><%= element.email %></h5>
+      <h5><%= element.mobile %></h5>
+      <h5><%= element.branch %></h5>
+      <h5><%= element.semester %></h5>
+      <h5><%= element.pname %></h5>
+      <h5><%= element.occupation %></h5>
+      <h5><%= element.marks %></h5>
+      <h5><%= element.cgpa %></h5>
+      <h5><%= element.name %></h5>
+      <h5><%= element.name %></h5>
+      <h5><%= element.name %></h5>
+      <h5><%= element.name %></h5>
+      <div class="container grid grid-cols-2">
+        <a
+          href="http://localhost:3000/dashboard/accept/<%=element._id%>"
+          class="border-2 box-border bg-emerald-800 text-white text-center"
+        >
+          <button type="submit" class="text-center">Accept</button>
+        </a>
+
+        <a
+          href="http://localhost:3000/dashboard/reject/<%=element._id%>"
+          class="border-2 box-border bg-red-700 text-white text-center"
+        >
+          <button type="submit" class="text-center">Reject</button>
+        </a>
+      </div>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>
