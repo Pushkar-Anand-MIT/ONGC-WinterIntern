@@ -19,9 +19,7 @@
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6e0GlvpFhLzztcgI1Rlg2HKpr4VQwLaspLpZh9iI&s"
           alt="Icon"
         />
-        <a
-          class="btn btn-ghost normal-case text-xl text-gray-400"
-          href="home.ejs"
+        <a class="btn btn-ghost normal-case text-xl text-gray-400" href="/"
           >ONGC</a
         >
       </div>
@@ -41,8 +39,8 @@
             class="input w-full"
             type="text"
             name="name"
-            placeholder="Full Name"
             required
+            placeholder="Full Name"
           />
         </div>
         <div class="flex gap-x-4">
@@ -63,11 +61,11 @@
             <input
               type="date"
               name="dob"
+              required
               placeholder="dd/mm/yy"
               max="2022-01-01"
               min="1982-01-31"
               class="input w-full"
-              required
             />
           </div>
         </div>
@@ -78,8 +76,8 @@
           type="password"
           name="aadhar"
           class="input w-full"
-          placeholder="xxxx xxxx xxxx"
           required
+          placeholder="xxxx xxxx xxxx"
         />
         <label for="" class="label w-fit"
           >Address<span style="color: red">*</span></label
@@ -88,8 +86,8 @@
           class="input w-full"
           type="text"
           name="address"
-          placeholder="1234 Main St"
           required
+          placeholder="1234 Main St"
         />
         <div class="flex gap-x-4">
           <div class="flex-1">
@@ -100,8 +98,8 @@
               class="input w-full"
               type="email"
               name="email"
-              placeholder="Email"
               required
+              placeholder="Email"
             />
           </div>
           <div class="flex-1">
@@ -112,8 +110,8 @@
               type="number"
               name="mobile"
               class="input w-full"
-              placeholder="+91-10 digit mobile number"
               required
+              placeholder="+91-10 digit mobile number"
             />
           </div>
         </div>
@@ -127,8 +125,8 @@
               class="input w-full"
               type="text"
               name="branch"
-              placeholder="Branch"
               required
+              placeholder="Branch"
             />
           </div>
           <div class="flex-1">
@@ -139,8 +137,8 @@
               type="text"
               name="semester"
               class="input w-full"
-              placeholder="Semester"
               required
+              placeholder="Semester"
             />
           </div>
         </div>
@@ -152,8 +150,8 @@
           class="input w-full"
           type="text"
           name="pname"
-          placeholder="Parent's Name"
           required
+          placeholder="Parent's Name"
         />
         <label for="" class="label w-fit"
           >Occupation<span style="color: red">*</span></label
@@ -162,8 +160,8 @@
           class="input w-full"
           type="text"
           name="occupation"
-          placeholder="Parent's Occupation"
           required
+          placeholder="Parent's Occupation"
         />
         <label for="" class="label w-fit"
           >Percentage in Class XII<span style="color: red">*</span></label
@@ -172,8 +170,8 @@
           class="input w-full"
           type="number"
           name="marks"
-          placeholder="Percentage "
           required
+          placeholder="Percentage "
         />
         <label for="" class="label w-fit"
           >GCPA/Percentage in Last Semester<span style="color: red"
@@ -184,8 +182,8 @@
           class="input w-full"
           type="number"
           name="cgpa"
-          placeholder="CGPA/Percentage"
           required
+          placeholder="CGPA/Percentage"
         />
         <div class="flex gap-x-4">
           <div class="flex-1">
@@ -193,27 +191,34 @@
               >Photograph<span style="color: red">*</span></label
             >
             <input
+              type="text"
+              class="hidden"
+              name="photograph"
+              id="photograph"
+            />
+            <input
               class="file-input w-full"
               type="file"
-              id="photograph"
-              onchange="upload('photograph')"
-              name="photograph"
-              placeholder="Photograph"
+              id="photograph-upload"
+              onchange="upload('photograph-upload')"
+              name="photograph-upload"
               required
+              placeholder="Photograph"
             />
           </div>
           <div class="flex-1">
             <label for="marksheet" class="label w-fit"
               >Marksheet of Class XII<span style="color: red">*</span></label
             >
+            <input type="text" class="hidden" name="marksheet" id="marksheet" />
             <input
-              id="marksheet"
+              id="marksheet-upload"
               class="file-input w-full"
               type="file"
-              name="marksheet"
-              onchange="upload('marksheet')"
-              placeholder="Marksheet"
+              name="marksheet-upload"
+              onchange="upload('marksheet-upload')"
               required
+              placeholder="Marksheet"
             />
           </div>
         </div>
@@ -222,28 +227,30 @@
             <label for="lastsem" class="label w-fit"
               >Last Semester Marksheet<span style="color: red">*</span></label
             >
+            <input type="text" class="hidden" name="lastsem" id="lastsem" />
             <input
-              id="lastsem"
+              id="lastsem-upload"
               class="file-input w-full"
               type="file"
-              name="lastsem"
-              onchange="upload('lastsem')"
-              placeholder="Marksheet"
+              name="lastsem-upload"
+              onchange="upload('lastsem-upload')"
               required
+              placeholder="Marksheet"
             />
           </div>
           <div class="flex-1">
             <label for="letter" class="label w-fit"
               >Bonafide Training Letter<span style="color: red">*</span></label
             >
+            <input type="text" class="hidden" name="letter" id="letter" />
             <input
-              id="letter"
+              id="letter-upload"
               class="file-input w-full"
               type="file"
-              name="letter"
-              onchange="upload('letter')"
-              placeholder="Letter"
+              name="letter-upload"
+              onchange="upload('letter-upload')"
               required
+              placeholder="Letter"
             />
           </div>
         </div>
@@ -294,6 +301,9 @@
               console.log(err);
             } else {
               file.fileName = result.url;
+              const urladdr = document.getElementById(id.split("-")[0]);
+              console.log(urladdr);
+              urladdr.setAttribute("value", result.url);
               // file.setAttribute("value", result.url);
               // alert("File uploaded. Check console logs for success response");
               // console.log(result);

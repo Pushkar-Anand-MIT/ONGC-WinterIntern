@@ -38,10 +38,10 @@
       <h5><%= element.occupation %></h5>
       <h5><%= element.marks %></h5>
       <h5><%= element.cgpa %></h5>
-      <h5><%= element.name %></h5>
-      <h5><%= element.name %></h5>
-      <h5><%= element.name %></h5>
-      <h5><%= element.name %></h5>
+      <a href="<%= element.photograph %>" download>View Photograph</a>
+      <a href="<%= element.marksheet %>" download>View Marksheet</a>
+      <a href="<%= element.lastsem %>" download>View Last Sem Marksheet</a>
+      <a href="<%= element.letter %>" download>View Letter</a>
 
       <% if( element.status === "Pending") { %>
       <div class="container grid grid-cols-2">

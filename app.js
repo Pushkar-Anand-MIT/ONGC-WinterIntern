@@ -184,6 +184,7 @@ app.post("/register", async function (req, res) {
     letter: letter,
     status: "Pending",
   });
+
   formdata.save();
   const sendmail = await mailservice.send(
     email,
