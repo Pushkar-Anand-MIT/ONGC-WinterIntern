@@ -24,50 +24,118 @@
         >
       </div>
     </div>
-    <div class="container pt-20 max-w-[960px] mx-auto box-border border-2">
-      <h1 class="text-center text-xl font-medium mb-5"><%= element.name %></h1>
-      <h5><%= element.gender %></h5>
-      <h5><%= element.dob %></h5>
-      <h5><%= element.aadhar %></h5>
-      <h5><%= element.address %></h5>
-      <h5><%= element.email %></h5>
-      <h5><%= element.mobile %></h5>
-      <h5><%= element.branch %></h5>
-      <h5><%= element.semester %></h5>
-      <h5><%= element.pname %></h5>
-      <h5><%= element.occupation %></h5>
-      <h5><%= element.marks %></h5>
-      <h5><%= element.cgpa %></h5>
-      <a href="<%= element.photograph %>" download>View Photograph</a>
-      <a href="<%= element.marksheet %>" download>View Marksheet</a>
-      <a href="<%= element.lastsem %>" download>View Last Sem Marksheet</a>
-      <a href="<%= element.letter %>" download>View Letter</a>
+    <div class="pt-20">
+      <div
+        class="max-w-[960px] mx-auto bg-white box-border border-2 rounded-md space-y-4 pt-10"
+      >
+        <div class="px-5 flex item-center justify-between">
+          <p class="font-bold">Name:</p>
+          <h1><%= element.name %></h1>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Gender:</p>
+          <h5><%= element.gender %></h5>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Date of Birth:</p>
+          <h5><%= element.dob %></h5>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Aadhar:</p>
+          <h5><%= element.aadhar %></h5>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Address:</p>
+          <h5><%= element.address %></h5>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Email:</p>
+          <h5><%= element.email %></h5>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Mobile:</p>
+          <h5><%= element.mobile %></h5>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Branch:</p>
+          <h5><%= element.branch %></h5>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Semester:</p>
+          <h5><%= element.semester %></h5>
+        </div>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Parent's Name:</p>
+          <h5><%= element.pname %></h5>
+        </div>
 
-      <% if( element.status === "Pending") { %>
-      <div class="container grid grid-cols-2">
-        <a
-          href="http://localhost:3000/dashboard/accept/<%=element._id%>"
-          class="border-2 box-border bg-emerald-800 text-white text-center"
-        >
-          <button type="submit" class="text-center">Accept</button>
-        </a>
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Occupation:</p>
+          <h5><%= element.occupation %></h5>
+        </div>
 
-        <a
-          href="http://localhost:3000/dashboard/reject/<%=element._id%>"
-          class="border-2 box-border bg-red-700 text-white text-center"
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">Marks:</p>
+          <h5><%= element.marks %></h5>
+        </div>
+
+        <div class="px-5 flex items-center justify-between">
+          <p class="font-bold">CGPA:</p>
+          <h5><%= element.cgpa %></h5>
+        </div>
+
+        <div class="grid grid-cols-4 p-5 justify-center gap-x-4">
+          <a href="<%= element.photograph %>" download class="btn btn-primary"
+            >View Photograph</a
+          >
+          <a href="<%= element.marksheet %>" download class="btn btn-primary"
+            >View Marksheet</a
+          >
+          <a href="<%= element.lastsem %>" download class="btn btn-primary"
+            >View Last Sem Marksheet</a
+          >
+          <a href="<%= element.letter %>" download class="btn btn-primary"
+            >View Letter</a
+          >
+        </div>
+
+        <% if( element.status === "Pending") { %>
+        <div class="container flex py-5 px-2 text-lg gap-x-5">
+          <div class="flex-1">
+            <a
+              href="http://localhost:3000/dashboard/accept/<%=element._id%>"
+              class=""
+            >
+              <button type="submit" class="btn bg-green-500 w-full text-white">
+                Accept
+              </button>
+            </a>
+          </div>
+          <div class="flex-1">
+            <a
+              href="http://localhost:3000/dashboard/reject/<%=element._id%>"
+              class=""
+            >
+              <button type="submit" class="btn bg-red-500 w-full text-white">
+                Reject
+              </button>
+            </a>
+          </div>
+        </div>
+        <% }else if(element.status === "Accepted") { %>
+        <div
+          class="box-border rounded-lg border-2 bg-emerald-800 text-center text-white py-2"
         >
-          <button type="submit" class="text-center">Reject</button>
-        </a>
+          Accepted
+        </div>
+        <%}else{%>
+        <div
+          class="box-border border-2 rounded-lg bg-red-700 text-center text-white py-2"
+        >
+          Rejected
+        </div>
+        <%}%>
       </div>
-      <% }else if(element.status === "Accepted") { %>
-      <div class="box-border border-2 bg-emerald-800 text-center text-white">
-        Accepted
-      </div>
-      <%}else{%>
-      <div class="box-border border-2 bg-red-700 text-center text-white">
-        Rejected
-      </div>
-      <%}%>
     </div>
 
     <script src="https://cdn.tailwindcss.com"></script>

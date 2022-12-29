@@ -210,7 +210,11 @@ app.get("/dashboard/accept/:id", async function (req, res) {
   const { id } = req.params;
   const element = await Formdata.updateOne({ _id: id }, { status: "Accepted" });
   console.log(element);
-
+  const sendmail = await mailservice.send(
+    element.email,
+    "Intern Application Status",
+    "Dear Candidate,<br>Thank you for submitting the ONGC intern application form. We have received your submission and it is being processed. We will review your submission and get back to you. If you have any questions in the meantime, please don't hesitate to contact us at ongc@gmail.com. Thank you for your patience and cooperation.Sincerely, ONGC"
+  );
   res.redirect("/dashboard");
 });
 
@@ -218,7 +222,11 @@ app.get("/dashboard/reject/:id", async function (req, res) {
   const { id } = req.params;
   const element = await Formdata.updateOne({ _id: id }, { status: "Rejected" });
   console.log(element);
-
+  const sendmail = await mailservice.send(
+    element.email,
+    "Intern Application Status",
+    "Dear Candidate,<br>Thank you for submitting the ONGC intern application form. We have received your submission and it is being processed. We will review your submission and get back to you. If you have any questions in the meantime, please don't hesitate to contact us at ongc@gmail.com. Thank you for your patience and cooperation.Sincerely, ONGC"
+  );
   res.redirect("/dashboard");
 });
 
