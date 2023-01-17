@@ -69,7 +69,7 @@ const user = new UserData({
   password: "admin",
 });
 
-user.save();
+// user.save();
 
 const Formdata = mongoose.model("Formdata", formSchema);
 
